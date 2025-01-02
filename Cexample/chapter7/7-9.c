@@ -7,7 +7,7 @@ int main()
 
     printf("2이상의 정수를 입력하시오:");
     
-    while ((check = scanf("%d", &num)) == 1)
+    while ((check = scanf("%d", &num)) == 1 && num > 0)
     {
         int i, j;
         for (i = 2; i <= num; i++)
