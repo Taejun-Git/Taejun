@@ -75,6 +75,5 @@ int main()
     }
     
     end : printf("종료!\n");
-    
     return 0;
 }
