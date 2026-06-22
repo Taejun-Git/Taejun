@@ -1,0 +1,192 @@
+chapter 2-1 
+
+#include <stdio.h>
+
+int main(void)
+{
+    printf("Gustav Mahler\n");
+    printf("Gustav\nMahler\n");
+    printf("Gustav ");
+    printf("Mahler\n");
+ 
+    return 0;
+}
+
+2-2
+
+#include <stdio.h>
+
+int main(void) {
+    
+    printf("이름: 고태준\n");
+    printf("주소: 도봉구 창동"\n");
+    
+    return 0;
+}
+
+2-3
+
+#include <stdio.h>
+
+int main(void) {
+    
+    int age = 22;
+    int year_change_to_day = 365;
+    
+    printf("나이:%d\n살아온 일수:%d\n", age, age * year_change_to_day);
+    
+    return 0;
+}
+
+2-4
+
+#include <stdio.h>
+
+void jolly(void);
+void deny(void);
+
+int main(void) {
+    
+    jolly();
+    jolly();
+    jolly();
+    deny();
+    
+    return 0;
+    
+}
+
+void jolly(void) {
+
+    printf("for he's a jollu good fellow!\n");
+    
+}
+
+void deny(void) {
+
+    printf("Which nobody con deny!\n");
+
+}
+
+2-5
+
+#include <stdio.h>
+
+void br(void);
+void ic(void);
+
+int main(void) {
+    
+    br();
+    printf(", ");
+    ic();
+    printf("\n");
+    ic();
+    printf(",\n");
+    br();
+    
+    return 0;
+    
+}
+
+void br(void) {
+    printf("Brazil, Russia");
+}
+
+void ic(void) {
+    printf("India, China");
+}
+
+
+2-6
+
+#include <stdio.h>
+
+int main(void)
+{
+    
+    int toes;
+    toes = 10;
+    
+    printf("toes = %d\n2toes = %d\ntoes^2 = %d\n", toes, 2 * toes, toes * toes);
+
+    return 0;
+}
+
+2-7
+
+#include <stdio.h>
+
+void smile(void);
+
+int main(void)
+{
+    
+    smile();#include <stdio.h>
+
+void one_three(void);
+void two(void);
+
+int main(void)
+{
+    
+    printf("starting now:\n");
+    one_three();
+    printf("done!");
+    
+    return 0;
+}
+
+void one_three(void) {
+    printf("one\n");
+    two();
+    printf("three\n");
+}
+
+void two(void) {
+    printf("two\n");
+}
+
+    smile();
+    smile();
+    printf("\n");
+    smile();
+    smile();
+    printf("\n");
+    smile();
+    printf("\n");
+    
+
+    return 0;
+}
+
+void smile(void) {
+    printf("smile!");
+}
+
+2-8
+
+#include <stdio.h>
+
+void one_three(void);
+void two(void);
+
+int main(void)
+{
+    
+    printf("starting now:\n");
+    one_three();
+    printf("done!");
+    
+    return 0;
+}
+
+void one_three(void) {
+    printf("one\n");
+    two();
+    printf("three\n");
+}
+
+void two(void) {
+    printf("two\n");
+}
