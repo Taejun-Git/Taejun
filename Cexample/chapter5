@@ -1,0 +1,145 @@
+5-1
+#include <stdio.h>
+#define H_PER_M 60
+
+int main()
+{
+    int time, min, hour;
+    
+    printf("분 수 입력(0 입력시 종료):");
+    scanf("%d", &time);
+    
+    while (time > 0)
+    {
+        hour = time / H_PER_M;
+        min = time % H_PER_M;
+        printf("%d분은 %d시간 %d분\n", time, hour, min);
+        printf("분 수 입력:");
+        scanf("%d", &time);
+    }
+    
+    printf("종료!");
+
+    return 0;
+}
+
+5-4
+#include <stdio.h>
+
+int main()
+{
+    double height, inch, feet;
+    printf("센티미터 단위로 키를 입력하시오: ");
+    scanf("%lf", &height);
+    
+    while (height > 0)
+    {
+        inch = height / 2.54;
+        feet = height / 30.48;
+        
+        printf("%.1f센티미터는 %.1f피트, %.1f인치입니다.\n", height, feet, inch);
+        printf("센티미터 단위로 키를 입력하시오(끝내려면 <=0): ");
+        scanf("%lf", &height);
+    }
+    
+    printf("안녕!");
+    return 0;
+}
+
+5-5
+#include <stdio.h>
+
+int main()
+{
+    int work_day, sum, count;
+    
+    sum = 0;
+    count = 1;
+    
+    printf("일한 날의 수 입력(최대 20일):");
+    scanf("%d", &work_day);
+    
+    while (count <= work_day)
+        sum = sum + count++;
+    
+    printf("%d일할 시 받는 급료:%d", work_day, sum);
+    
+    return 0;
+}
+
+5-7
+#include <stdio.h>
+
+float cube(float f);
+
+int main()
+{
+    float f;
+    printf("부동소수점 수 입력:");
+    scanf("%f", &f);
+    printf("%.1f의 세 제곱은 %.1f입니다.", f, cube(f));
+
+    return 0;
+}
+
+float cube(float f)
+{
+    return f * f * f;
+}
+
+5-8
+#include <stdio.h>
+
+float cube(float f);
+
+int main()
+{
+    int operand_1, operand_2;
+    
+    printf("이 프로그램은 모듈러스(두 수를 나눈 나머지)를 구하는 프로그램이다.\n");
+    printf("두 번쨰 피연산자로 제공할 정수를 입력하시오. : ");
+    scanf("%d", &operand_2);
+    printf("이제 첫 번째 피연산자를 입력하시오. " );
+    scanf("%d", &operand_1);
+    
+    while (operand_1 > 0)
+    {
+        printf("%d %% %d = %d\n", operand_1, operand_2, operand_1 % operand_2);
+        printf("첫 번쨰 피연산자(<=0 이면 종료)용 다음 수를 입력하시오.: ");
+        scanf("%d", &operand_1);
+    }
+    
+    printf("종료");
+    
+    return 0;
+}
+
+5-9
+#include <stdio.h>
+const double ratio = 5.0/9.0;
+const double freezing_point = 32.0;
+const double control_point_diff = 273.16;
+
+void Temperatures(double Fahrenheit);
+
+int main()
+{
+    double Fahrenheit;
+    
+    printf("화씨온도 입력:");
+    
+    while (scanf("%lf", &Fahrenheit) == 1)
+    {
+        Temperatures(Fahrenheit);
+        printf("화씨온도 입력:");
+    }
+    
+    printf("문자 입력시 프로그램 종료");
+    
+}
+
+void Temperatures(double Fahrenheit)
+{
+    printf("섭씨온도: %.2f\n", ratio * (Fahrenheit - freezing_point));
+    printf("절대온도: %.2f\n", Fahrenheit + control_point_diff);
+}
