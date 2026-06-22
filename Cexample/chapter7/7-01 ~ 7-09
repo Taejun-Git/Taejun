@@ -1,0 +1,437 @@
+7-1 //반복 실행
+
+#include <stdio.h>
+
+int main(void)
+{
+    char ch;
+
+    while (1) 
+    {
+        int character = 0, space = 0, new_line = 0;
+        
+        printf("문자열 입력: ");
+        
+        while ((ch = getchar()) != '#')
+        {
+            character++;
+        
+            if (ch == ' ')
+                 space++;
+            else if (ch == '\n')
+                 new_line++;
+            
+        }
+        
+        printf("읽은 스페이스의 수: %d, 읽은 개행 문자의 수; %d 모든 문자의 수; %d\n", space, new_line, character);
+        
+    }
+
+    return 0;
+}
+
+7-1 //한 번 실행
+
+#include <stdio.h>
+
+int main(void)
+{
+    char ch;
+
+    int character = 0, space = 0, new_line = 0;
+        
+    printf("문자열 입력: ");
+        
+    while ((ch = getchar()) != '#')
+    {
+        character++;
+        
+        if (ch == ' ')
+            space++;
+        else if (ch == '\n')
+            new_line++;
+    }
+        
+    printf("읽은 스페이스의 수: %d, 읽은 개행 문자의 수; %d 모든 문자의 수; %d\n", space, new_line, character);
+
+    return 0;
+}
+
+7-1 // switch 이용
+
+#include <stdio.h>
+
+int main(void)
+{
+    char ch;
+    int character = 0, space = 0, new_line = 0;
+    
+    printf("문자열 입력: ");
+    
+    while ((ch = getchar()) != '#')
+    {
+        switch (ch)
+        {
+            case ' ' : space++;
+                       break;
+            
+            case '\n' : new_line++;
+                        break;
+                        
+            default : character++;
+                      break;
+        }
+    }
+    
+    printf("읽은 스페이스의 수: %d, 읽은 개행 문자의 수; %d 모든 문자의 수; %d\n", space, new_line, character);
+        
+    return 0;
+}
+
+7-2
+
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+    int count = 0;
+    
+    while ((ch = getchar()) != '#')
+    {
+        printf("%c - %d ", ch, ch);
+        
+        if (++count > 7) 
+        {
+            printf("\n");
+            count = 0;
+        }
+    }
+
+    return 0;
+}
+
+7-2 //hint로 풀기
+
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+    int count = 0;
+    
+    while ((ch = getchar()) != '#')
+    {
+        printf("%c - %d ", ch, ch);
+        
+        if (++count % 8 == 0) 
+        {
+            printf("\n");
+            count = 0;
+        }
+    }
+
+    return 0;
+}
+
+7-3 // 0  0하면 값나옴 -> 왜지?
+
+#include <stdio.h>
+
+int main()
+{
+    // 짝수는 2로 나누었을 때 나머지가 0
+    // 홀수는 2로 나누었을 때 나머지가 1
+    int num = 0;
+    int odd_num = 0, even_num = 0;
+    int add_odd = 0, add_even = 0;
+    int count;
+    
+    while ((count = scanf("%d ", &num)) == 1) // -> P.152 while (scanf("%d ", &num) == 1) 이렇게 하면 출력이 안되는데?
+    {
+
+        if (num == 0)
+            break;
+        
+        if ((num % 2) == 1)
+        {
+            odd_num++;
+            add_odd += num;
+        }
+        else if ((num % 2) == 0)
+        {
+            even_num++;
+            add_even += num;
+        }
+        else
+            ;
+    }
+    
+    printf("짝수의 개수: %d 평균: %.1f 홀수의 개수: %d 평균: %.1f\n", even_num, (float)add_even / even_num, odd_num, (float)add_odd / odd_num);
+    return 0;
+}
+
+7-4
+
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+    int num = 0;
+    
+    while ((ch = getchar()) != '#')
+    {
+        if (ch == '!')
+        {
+            printf("%s", "!!");
+            num++;
+        }
+        else if (ch == '.')
+        {
+            printf("%c", '!');
+            num++;
+        }
+        else
+            continue;
+    }
+    
+    printf("\n대체한 횟수: %d", num);
+    return 0;
+}
+
+7-5
+
+#include <stdio.h>
+
+int main()
+{
+    char ch;
+    int num = 0;
+    
+    while ((ch = getchar()) != '#')
+    {
+        switch (ch)
+        {
+            case '.' : putchar('!');
+                       num++;
+                       break;
+                       
+            case '!' : putchar('!');
+                       putchar('!');
+                       num++;
+                       break;
+                       
+            default : putchar(ch);
+        }
+    }
+    
+    printf("\n대체한 횟수: %d", num);
+    return 0;
+}
+
+7-6
+
+#include <stdio.h>
+
+int main()
+{
+    char ch, ch_copy;
+    int count = 0;
+    
+    while ((ch = getchar()) != '#')
+    {
+        if (ch == 'i')
+        {
+            if (ch_copy == 'e')
+                ++count;
+        }
+        
+        ch_copy = ch;
+    }
+    
+    printf("문자 시퀀스 ei가 나타난 횟수 = %d", count);
+    return 0;
+}
+
+7-6-(2)
+
+#include <stdio.h>
+#include <string.h>
+
+#define SIZE 30
+
+int main(void)
+{
+    char ch[SIZE];
+    
+    int count = 0;
+    
+    while (scanf("%s ", ch))
+    {
+        for (int i = 1; i < strlen(ch); i++)
+        {
+            if (ch[i - 1] == 'e' && ch[i] == 'i')
+            {
+                count++;
+            }
+        }
+        
+        printf("문자 시퀀스 ei가 나타난 횟수: %d", count);
+    }
+    
+    return 0;
+}
+
+7-7
+
+#include <stdio.h>
+
+#define WAGE 10.00
+#define TAX_RATE1 0.15
+#define TAX_RATE2 0.2
+#define TAX_RATE3 0.25
+#define TAX_UPPER1 300
+#define TAX_UPPER2 450
+#define BREAK1 TAX_RATE1 * TAX_UPPER1
+#define BREAK2 BREAK1 + ((TAX_UPPER2 - TAX_UPPER1) * TAX_RATE2)
+#define OVER_TIME 40
+
+int main()
+{
+    int work_hour;
+    int count;
+    double pay;
+    double work_overtime;
+    double taxes;
+    
+    while ((count = scanf("%d", &work_hour)) == 1 && work_hour >= 0)
+    {
+        if (work_hour <= OVER_TIME)
+            pay = work_hour * WAGE;
+        else if (work_hour > OVER_TIME)
+            pay = WAGE * OVER_TIME + WAGE * 0.5 * (work_hour - OVER_TIME);
+        
+        if (pay <= TAX_UPPER1)
+            taxes = pay * 0.15;
+        else if (pay <= TAX_UPPER2)
+            taxes = BREAK1 + ((pay - TAX_UPPER1) * TAX_RATE2);
+        else
+            taxes = BREAK2 + ((pay - TAX_UPPER2) * TAX_RATE3);
+        
+        printf("GROSS PAY: %.1f TAXES: %.1f NET PAY: %.1f", pay, taxes, pay - taxes);
+    }
+    return 0;
+}
+
+7-8
+
+#include <stdio.h>
+
+#define TAX_RATE1 0.15
+#define TAX_RATE2 0.2
+#define TAX_RATE3 0.25
+#define TAX_UPPER1 300
+#define TAX_UPPER2 450
+#define BREAK1 TAX_RATE1 * TAX_UPPER1
+#define BREAK2 BREAK1 + ((TAX_UPPER2 - TAX_UPPER1) * TAX_RATE2)
+#define OVER_TIME 40
+
+int main()
+{
+    int work_hour;
+    int count;
+    int num;
+    double pay;
+    double work_overtime;
+    double taxes;
+    double wage;
+    
+    while (1)
+    {
+        printf("*************************************************************************\n");
+        printf("자신의 기본급에 해당하는 번호를 선택하시오(끝내려면 5번을 선택하시오):\n");
+        printf("1)시간당 $8.75                  2) 시간당 $9.33\n");
+        printf("3)시간당 $10.00                 4) 시간당 $11.20\n");
+        printf("5) 종료\n");
+        printf("*************************************************************************\n");
+        
+        if ((count = scanf("%d", &num)) == 1 && 1 <= num && num <= 5)
+        {
+            switch (num)
+            {
+                case 1 : wage = 8.75;
+                         break;
+                         
+                case 2 : wage = 9.33;
+                         break;
+                         
+                case 3 : wage = 10.00;
+                         break;
+                         
+                case 4 : wage = 11.20;
+                         break;
+                         
+                case 5 : goto end;
+            }
+            
+            printf("주당 근무 시간을 입력하시오: ");
+        
+            if ((count = scanf("%d", &work_hour)) == 1 && work_hour >= 0)
+            {
+                if (work_hour <= OVER_TIME)
+                    pay = work_hour * wage;
+                else if (work_hour > OVER_TIME)
+                    pay = wage * OVER_TIME + wage * 0.5 * (work_hour - OVER_TIME);
+                
+                if (pay <= TAX_UPPER1)
+                    taxes = pay * 0.15;
+                else if (pay <= TAX_UPPER2)
+                    taxes = BREAK1 + ((pay - TAX_UPPER1) * TAX_RATE2);
+                else
+                    taxes = BREAK2 + ((pay - TAX_UPPER2) * TAX_RATE3);
+            }
+            
+            printf("GROSS PAY: %.1f TAXES: %.1f NET PAY: %.1f\n", pay, taxes, pay - taxes);
+            
+        }
+        else 
+        {
+            printf("다시 선택하시오\n");
+            break;
+        }
+    }
+    
+    end : printf("종료!\n");
+    
+    return 0;
+}
+
+7-9
+
+#include <stdio.h>
+
+int main()
+{
+    unsigned int num;
+    int count = 0;
+    
+    printf("2이상의 정수를 입력하시오: ");
+    
+    while ((count = scanf("%u", &num)) == 1)
+    {
+        int i, j;
+        for (i = 2; i <= num; i++)
+        {
+            for (j = 1; j <= i; j++)
+            {
+                if (i % j == 0)
+                    count++;
+            }
+            
+            if (count == 2)
+                printf("%d ", i);
+        }
+    }
+    return 0;
+}
