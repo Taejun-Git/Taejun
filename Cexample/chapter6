@@ -1,0 +1,407 @@
+6-1
+#include <stdio.h>
+#define SIZE 26
+
+int main(void)
+{
+    char alphabet[SIZE];
+    
+    for (int i = 0; i < SIZE; i++)
+    {
+        scanf("%c", &alphabet[i]);
+        getchar();
+    }
+    
+    for (int i = 0; i < SIZE; i++)
+        printf("%c", alphabet[i]);
+    
+    return 0;
+}
+6-2
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 1; i <= 5; i++) 
+    {
+        for (int j = 1; j <= i; j++)
+            printf("$");
+        printf("\n");
+    }
+    return 0;
+}
+
+6-3
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i <= 5; i++)
+    {
+        for (int F = 70, j = 0; j <= i; j++, F -= 1)
+            printf("%c", (char)F);
+        printf("\n");
+    }
+
+    return 0;
+}
+
+6-4
+#include <stdio.h>
+
+int main(void)
+{
+    int A = 65;
+    
+    for (int i = 0; i < 6; i++)
+    {
+        for(int j = 0; j <= i; j++, A += 1)
+            printf("%c", (char) A);
+        printf("\n");
+    }
+
+    return 0;
+}
+
+6-5
+#include <stdio.h>
+
+int main(void)
+{
+    //애스터 리스크 사용하면 될 듯.
+    char input;
+    char A = 'A';
+    printf("알파벳 입력:");
+    scanf("%c", &input);
+    printf("\n");
+    for (char input_1 = input; A <= input_1; A++)
+    {
+        for (char input_2 = input, space = ' '; (input_2 - (char) 1)>= A; input_2--)
+            printf("%c", space);
+        
+        for (char A_2 = 'A'; A_2 <= A; A_2++)
+            printf("%c", A_2);
+            
+        for (char A_3 = ('A' - (char) 1), A_4 = 'A'; A_3 >= A_4; A_3++)
+            printf("%c", A_3);
+            
+        printf("\n");
+    }
+    return 0;
+}
+6-6
+#include <stdio.h>
+
+int main(void)
+{
+    int start, end;
+    
+    for (scanf("%d %d", &start, &end); start <= end; start++)
+    {
+        printf("%d %d %d\n", start, start * start, start * start * start);
+    }
+
+    return 0;
+}
+
+6-7
+#include <stdio.h>
+#include <string.h>
+#define SIZE 40
+
+int main(void)
+{
+    char array[SIZE];
+    
+    scanf("%s", array);
+    for (long i = (strlen(array) - (long) 1); i >= 0; i--)
+        printf("%c", array[i]);
+
+    return 0;
+}
+6-8
+#include <stdio.h>
+
+int main(void)
+{
+    double first, second;
+    
+    printf("첫 번째,두 번째 부동소수점 수 입력:");
+    
+    while (scanf("%lf %lf", &first, &second) == 2)
+    {
+        printf("%.6f\n", (first - second) / (first * second));
+        
+    }
+    return 0;
+}
+
+6-9
+
+#include <stdio.h>
+
+double answer (double first, double second);
+
+int main(void)
+{
+    double first, second;
+    
+    printf("첫 번째,두 번째 부동소수점 수 입력:");
+    
+    while (scanf("%lf %lf", &first, &second) == 2)
+    {
+        printf("%f\n", answer(first, second));
+        printf("첫 번째,두 번째 부동소수점 수 입력:");
+    }
+    return 0;
+}
+
+double answer (double first, double second)
+{
+    return (first - second) / (first * second);
+}
+
+6-10
+#include <stdio.h>
+
+int main(void)
+{
+    int upper, lower;
+
+    printf("정수로 하한과 상한을 입력하시오: ");
+    scanf("%d %d", &lower, &upper);
+        
+    while (lower < upper)
+    {
+        int sum = 0;
+        
+        for (int copy_lower = lower; copy_lower <= upper; copy_lower++)
+        {
+            sum += copy_lower * copy_lower;
+        }
+        
+        printf("%d부터 %d까지, 제곱들의 합은 %d\n", lower, upper, sum);
+        printf("다음 하한과 상한을 입력하시오: ");
+        scanf("%d %d", &lower, &upper);
+    }
+
+    printf("종료!\n");
+    return 0;
+}
+
+6-11
+#include <stdio.h>
+#define SIZE 8
+
+int main(void)
+{
+    int array[SIZE];
+    
+    for (int i = 0; i < SIZE; i++)
+        scanf("%d", &array[i]);
+    
+    for (int j = SIZE - 1; j >= 0; j--)
+        printf("%d ", array[j]);
+    
+    return 0;
+}
+
+6-12
+#include <stdio.h>
+#include <math.h>
+
+int main(void)
+{
+    double positive_sum, negative_sum;
+    int num;
+    double i = 2;
+    printf("항 수 입력: ");
+    scanf("%d", &num);
+    
+    while(num > 0)
+    {
+        positive_sum = (double)0;
+        negative_sum = (double)0;
+        
+        for (double one = 1.0, one_1 = one, one_2 = one; (int)one <= num; one++, i++)
+        {  
+            positive_sum += one_2 / one;
+            negative_sum += one_2 / (pow(-1.0, i) * one); // one이 홀수 일 때 양수 짝수 일 때 음수 
+        }
+        
+        printf("positive_sum: %.6f, negative_sum: %.6f\n", positive_sum, negative_sum);
+        printf("항 수 입력: ");
+        scanf("%d", &num);
+    }
+    
+    printf("종료!");
+    return 0;
+}
+
+6-13
+#include <stdio.h>
+#define SIZE 8
+
+int main(void)
+{
+	int array[SIZE];
+
+	for (int i = SIZE - 1; i >= 0; i--)
+	{
+		for (int j = 0; j < SIZE - 1; j++)
+			array[i] *= 2;
+	}
+	
+	int k = 0;
+	
+	do
+	{
+	    array[0] = 1;
+	    
+        for (; k < SIZE; k++)
+        {
+            printf("%d", array[k]);
+        }
+	} while (k < SIZE);
+
+	return 0;
+}
+
+6-14
+#include <stdio.h>
+#define SIZE 8
+
+int main(void)
+{
+    double array_1[SIZE];
+    double array_2[SIZE];
+
+    for (int i = 0; i < SIZE; i++)
+        scanf("%lf", &array_1[i]);
+    
+    array_2[0] = array_1[0];
+    
+    for (int i = 1; i < SIZE; i++)
+        array_2[i] = array_1[i] + array_2[i-1];
+    
+    printf("\n");
+    
+    for (int i = 0; i < SIZE; i++)
+        printf("%.3f ", array_1[i]);
+        
+    printf("\n");
+    
+    for (int i = 0; i < SIZE; i++)
+        printf("%.3f ", array_2[i]);
+    
+    return 0;
+}
+
+6-15
+#include <stdio.h>
+
+#define SIZE 255
+
+int main(void)
+{
+    char word[SIZE];
+    size_t wordlen = 0;
+
+    while (scanf("%c", &word[wordlen]), (word[wordlen] != '\n'))
+        wordlen++;
+
+    while (printf("%c", word[--wordlen]), (wordlen > 0))
+        /* do nothing */ ;
+        
+    //scanf 작동원리,  엔터 기준이 아닌 버퍼를 기준으로 입력 받는다. 
+    
+    
+    return 0;
+}
+
+6-16
+#include <stdio.h>
+
+int main(void)
+{
+    double savings;
+    int year = 0;
+    
+    printf("저축액 입력: ");
+    scanf("%lf", &savings);
+    
+    double Deirdre = savings;
+    double Daphne = savings;
+    
+    while (Deirdre >= Daphne)
+    {
+        Deirdre += savings * 0.1;
+        Daphne += Daphne * 0.05;
+        year++;
+    }
+    
+    printf("저축액:%.3f\n", savings);
+    printf("Deirdre의 저축액(%.3lf)이 Daphne의 저축액(%.3lf)을 초과하는 데 걸리는 해: %d", Deirdre, Daphne, year);
+    
+    return 0;
+}
+
+6-17
+#include <stdio.h>
+
+int main(void)
+{
+    double money = 1000000;
+    int year = 0;
+    
+    while (money > (double)0)
+    {
+        money += money * (double)0.8;
+        money -= (double)100000;
+        year++;
+    }
+    
+    printf("계좌에 잔고가 없어지는 해: %d", year);
+    
+    return 0;
+}
+
+6-17
+
+#include <stdio.h>
+
+int main(void)
+{
+    double money = 1000000;
+    int year = 0;
+    
+    while (money > (double)0)
+    {
+        money += money * (double)0.08;
+        money -= (double)100000;
+        year++;
+    }
+    
+    printf("계좌에 잔고가 없어지는 해: %d", year);
+    
+    return 0;
+}
+
+6-18
+
+#include <stdio.h>
+#define Dunbar_number 150
+
+int main(void)
+{
+    int friend = 5;
+    
+    for(int i = 1; friend <= Dunbar_number; i++)
+    {
+        friend -= i;
+        friend = 2*friend;
+        printf("%d째 주 친구의 수:%d\n", i, friend);
+    }
+    
+    return 0;
+}
